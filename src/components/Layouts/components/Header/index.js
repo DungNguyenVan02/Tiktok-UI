@@ -13,7 +13,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
+import routesConfig from '~/config/routes';
 import Search from '../Search';
 import Button from '~/components/Button';
 import { Menu } from '~/components/Popper';
@@ -95,9 +97,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
-                </div>
+                </Link>
 
                 <Search />
 
@@ -133,7 +135,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://sconnt.fhan15-1.fna.fbcdn.net/v/t1.6435-9/186459454_923383958441365_1242049416168786999_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=-Gcyq8bGcHIAX9yMQZc&_nc_ht=scontent.fhan15-1.fna&oh=00_AfAhaBHZsBM2Vj21k7CNr1Jk-gxefrvnYdMmhmiDX4VhzA&oe=64B0BBBE"
+                                src="https://scontent.fhan5-1.fna.fbcdn.net/v/t1.6435-9/186459454_923383958441365_1242049416168786999_n.jpg?_nc_cat=106&cb=99be929b-59f725be&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7f2RDfIlqZsAX8pbXDL&_nc_ht=scontent.fhan5-1.fna&oh=00_AfDALbQ3YB_wZ5P72z3AzaKZwB1fzAcLdQXR7xIta7lT5Q&oe=64B396FE"
                                 alt="Nguyễn Văn A"
                             />
                         ) : (
