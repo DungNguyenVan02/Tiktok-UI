@@ -1,0 +1,109 @@
+.wrapper {
+    border-top: 1px solid #e3e3e4;
+}
+.label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #aaa;
+    padding: 8px;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.item-info {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.nickname {
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 700;
+    color: #161823;
+}
+
+.check,
+.preview-check {
+    font-size: 1.4rem;
+    margin-left: 4px;
+    color: #20d5ec;
+}
+
+.name {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #161823bf;
+}
+
+.all-btn {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 8px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.preview {
+    min-width: 320px;
+    padding: 26px;
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.preview-image {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.preview-follow {
+    padding: 6px 16px;
+}
+
+.preview-body {
+    margin-top: 12px;
+    color: var(--text-color);
+}
+
+.preview-nickname {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.preview-name {
+    font-size: 1.4rem;
+}
+
+.preview-analytics {
+    margin-top: 10px;
+    font-size: 1.8rem;
+}
+
+.preview-value ~ .preview-value {
+    margin-left: 20px;
+}
+
+.preview-label {
+    color: #161823bf;
+}
