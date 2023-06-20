@@ -1,0 +1,48 @@
+.preview {
+    min-width: 320px;
+    padding: 26px;
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.preview-image {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.preview-follow {
+    padding: 6px 16px;
+}
+
+.preview-body {
+    margin-top: 12px;
+    color: var(--text-color);
+}
+
+.preview-nickname {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.preview-name {
+    font-size: 1.4rem;
+}
+
+.preview-analytics {
+    margin-top: 10px;
+    font-size: 1.8rem;
+}
+
+.preview-value ~ .preview-value {
+    margin-left: 20px;
+}
+
+.preview-label {
+    color: #161823bf;
+}
