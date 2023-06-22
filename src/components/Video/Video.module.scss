@@ -100,13 +100,12 @@
 
 .control {
     .control-play {
-        left: 24px;
+        left: 14px;
         position: absolute;
-        bottom: 24px;
+        bottom: 22px;
         padding: 10px;
         -webkit-transition: opacity 0.3s;
         transition: all 0.3s ease-in;
-        bottom: 26px;
         color: white;
         cursor: pointer;
         opacity: 0;
@@ -115,8 +114,8 @@
 .control-sound {
     position: absolute;
     text-align: center;
-    bottom: 24px;
-    right: 24px;
+    right: 14px;
+    bottom: 22px;
     padding: 10px;
     color: var(--white);
     cursor: pointer;
@@ -128,7 +127,6 @@
     }
 
     .sound-level {
-        display: flex;
         width: 24px;
         height: 64px;
         margin: 8px 7px;
@@ -213,12 +211,6 @@
     padding-left: 30px;
 }
 
-.current-time {
-}
-
-.duration-time {
-}
-
 .report {
     display: flex;
     align-items: center;
@@ -239,7 +231,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     margin-left: 18px;
 
     .action-group {

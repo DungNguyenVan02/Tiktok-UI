@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Video.module.scss';
 
@@ -14,24 +14,75 @@ import routes from '~/config';
 import VideoAction from './VideoAction';
 import VideoPreviewInfo from './VideoPreviewInfo';
 const cx = classNames.bind(styles);
-function Video({ data }) {
+function Video({ data, volume, adjustVolume, toggleMuted }) {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isVolume, setIsVolume] = useState(false);
+    const [progressBarWidth, setProgressBarWidth] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
     const videoRef = useRef();
 
-    const handleTogglePlay = () => {
-        if (isPlaying) {
-            setIsPlaying(false);
-            videoRef.current.pause();
-        } else {
-            setIsPlaying(true);
+    useEffect(() => {
+        videoRef.current.volume = volume;
+    });
+
+    const handleTimeVideo = (e) => {
+        const currentTime = e.target.currentTime;
+        const durationTime = e.target.duration;
+        let widthProgressBarUpdate = (currentTime / durationTime) * 100;
+
+        let totalMin = Math.floor(durationTime / 60);
+        let totalSec = Math.floor(durationTime % 60);
+        if (totalSec < 10) {
+            totalSec = `0${totalSec}`;
+        }
+        let currentMin = Math.floor(currentTime / 60);
+        let currentSec = Math.floor(currentTime % 60);
+        if (currentSec < 10) {
+            currentSec = `0${currentSec}`;
+        }
+
+        setCurrentTime(`${currentMin}:${currentSec}`);
+        setDuration(`${totalMin}:${totalSec}`);
+        setProgressBarWidth(widthProgressBarUpdate);
+    };
+
+    const playVideo = () => {
+        if (isPlaying === false) {
             videoRef.current.play();
+            setIsPlaying(true);
         }
     };
 
-    const handleAdjustVolume = (e) => {
-        videoRef.current.volume = e.target.value / 100;
+    const pauseVideo = () => {
+        if (isPlaying === true) {
+            videoRef.current.pause();
+            setIsPlaying(false);
+        }
     };
+
+    const handleTogglePlay = () => {
+        isPlaying ? pauseVideo() : playVideo();
+    };
+
+    function elementInViewport() {
+        var bounding = videoRef.current.getBoundingClientRect();
+        if (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        ) {
+            playVideo();
+        } else {
+            pauseVideo();
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', elementInViewport);
+        return () => window.removeEventListener('scroll', elementInViewport);
+    });
 
     const handlePreview = (attrs) => <VideoPreviewInfo attrs={attrs} data={data} />;
     return (
@@ -74,13 +125,20 @@ function Video({ data }) {
                 <div className={cx('body')}>
                     <div className={cx('video-wrapper')} href="/">
                         <Link to={routes.home}>
-                            <video className={cx('video')} ref={videoRef} src={data?.file_url} />
+                            <video
+                                muted={volume === 0}
+                                className={cx('video')}
+                                ref={videoRef}
+                                src={data?.file_url}
+                                onTimeUpdate={handleTimeVideo}
+                                loop
+                            />
                         </Link>
                         <div className={cx('control')}>
                             <div className={cx('control-play')} onClick={handleTogglePlay}>
                                 {isPlaying ? <PauseIcon /> : <PlayIcon />}
                             </div>
-                            <div className={cx('control-sound')} onClick={() => setIsVolume(!isVolume)}>
+                            <div className={cx('control-sound')}>
                                 <div className={cx('sound-level')}>
                                     <input
                                         type="range"
@@ -88,18 +146,20 @@ function Video({ data }) {
                                         max="100"
                                         step="1"
                                         orient="vertical"
-                                        onChange={handleAdjustVolume}
+                                        onChange={adjustVolume}
+                                        value={volume * 100}
                                     />
                                 </div>
-                                {isVolume ? <VolumeIcon /> : <MuteIcon />}
+                                <div onClick={toggleMuted}>{volume === 0 ? <MuteIcon /> : <VolumeIcon />}</div>
                             </div>
                             <div className={cx('progress')}>
                                 <div className={cx('progress-area')}>
-                                    <div className={cx('progress-bar')}></div>
+                                    <div className={cx('progress-bar')} style={{ width: `${progressBarWidth}%` }}></div>
                                 </div>
                                 <div className={cx('progress-time')}>
-                                    <span className={cx('current-time')}>30</span>/
-                                    <span className={cx('duration-time')}>30</span>
+                                    <span className={cx('current-time')}>{currentTime}</span>
+                                    {'/'}
+                                    <span className={cx('duration-time')}>{duration}</span>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +177,9 @@ function Video({ data }) {
 
 Video.propTypes = {
     data: PropTypes.object.isRequired,
+    volume: PropTypes.number.isRequired,
+    adjustVolume: PropTypes.func.isRequired,
+    toggleMuted: PropTypes.func.isRequired,
 };
 
 export default Video;
