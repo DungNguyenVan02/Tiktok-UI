@@ -4,8 +4,8 @@ import * as videoService from '~/services/videoService';
 function Home() {
     const [videos, setVideos] = useState([]);
     const [page, setPage] = useState(1);
-    const [muted, setMuted] = useState(false);
     const [volume, setVolume] = useState(0);
+    const [prevVolume, setPrevVolume] = useState(0.5);
     useEffect(() => {
         const fetchApi = async () => {
             const result = await videoService.video('for-you', page);
@@ -29,12 +29,11 @@ function Home() {
         setVolume(e.target.value / 100);
     };
     const toggleMuted = () => {
-        if (muted) {
-            setVolume(0.5);
-            setMuted(false);
+        if (volume === 0) {
+            setVolume(prevVolume);
         } else {
+            setPrevVolume(volume);
             setVolume(0);
-            setMuted(true);
         }
     };
     return (

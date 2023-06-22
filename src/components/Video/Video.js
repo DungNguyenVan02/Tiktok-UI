@@ -23,7 +23,14 @@ function Video({ data, volume, adjustVolume, toggleMuted }) {
     const videoRef = useRef();
 
     useEffect(() => {
+        elementInViewport();
+    }, []);
+
+    useEffect(() => {
         videoRef.current.volume = volume;
+
+        window.addEventListener('scroll', elementInViewport);
+        return () => window.removeEventListener('scroll', elementInViewport);
     });
 
     const handleTimeVideo = (e) => {
@@ -78,11 +85,6 @@ function Video({ data, volume, adjustVolume, toggleMuted }) {
             pauseVideo();
         }
     }
-
-    useEffect(() => {
-        window.addEventListener('scroll', elementInViewport);
-        return () => window.removeEventListener('scroll', elementInViewport);
-    });
 
     const handlePreview = (attrs) => <VideoPreviewInfo attrs={attrs} data={data} />;
     return (
