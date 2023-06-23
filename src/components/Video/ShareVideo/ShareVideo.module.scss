@@ -1,0 +1,57 @@
+.wrapper {
+    min-width: 280px;
+    max-height: 448px;
+    overflow-y: auto;
+}
+
+.share-list {
+    list-style: none;
+}
+
+.share-item {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    padding: 10px 20px 4px 20px;
+
+    .name {
+        margin-left: 12px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: rgba(22, 24, 35, 1);
+    }
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.more-btn {
+    width: 100%;
+    background-color: transparent;
+    font-size: 2.4rem;
+    padding: 4px 0;
+    color: rgba(22, 24, 35, 1);
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.arrow {
+    visibility: hidden;
+}
+.arrow::before {
+    visibility: visible;
+    content: '';
+    top: 0;
+    left: -12px;
+    position: absolute;
+    border: 14px solid;
+    border-color: var(--white) transparent transparent transparent;
+}
+
+.menu-popper {
+    padding-bottom: 8px;
+}

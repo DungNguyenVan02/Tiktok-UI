@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import routes from '~/config';
 import VideoAction from './VideoAction';
 import VideoPreviewInfo from './VideoPreviewInfo';
+
 const cx = classNames.bind(styles);
 function Video({ data, volume, adjustVolume, toggleMuted }) {
     const [isPlaying, setIsPlaying] = useState(false);
