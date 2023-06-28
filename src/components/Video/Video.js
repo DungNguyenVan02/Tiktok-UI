@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Video.module.scss';
 
@@ -10,6 +10,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { PlayIcon, PauseIcon, FlagIcon, MusicIcon, VolumeIcon, MuteIcon } from '../Icons';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+import { ModalContext } from '../ModalProvider';
 import routes from '~/config';
 import VideoAction from './VideoAction';
 import VideoPreviewInfo from './VideoPreviewInfo';

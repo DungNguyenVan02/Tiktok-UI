@@ -35,7 +35,7 @@ function Menu({ children, items = [], onChange = () => {} }, hideOnClick = false
 
     const renderResult = (attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-            <div className={cx('arrow')} data-popper-arrow="" />
+            <div className={cx('arrow')} data-popper-arrow={true} />
             <PopperWrapper className={cx('menu-popper')}>
                 {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
                 <div className={cx('menu-body')}>{renderItems()}</div>

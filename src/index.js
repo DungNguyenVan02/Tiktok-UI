@@ -4,11 +4,15 @@ import App from '~/App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from '~/components/GlobalStyles';
 
+import { ModalProvider as LoginProvider } from './components/ModalProvider';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <GlobalStyles>
-            <App />
+            <LoginProvider>
+                <App />
+            </LoginProvider>
         </GlobalStyles>
     </React.StrictMode>,
 );

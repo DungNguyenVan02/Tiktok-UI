@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
@@ -15,7 +16,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
 
-import routes from '~/config';
+import { ModalContext } from '~/components/ModalProvider';
 import Search from '../Search';
 import Button from '~/components/Button';
 import { Menu } from '~/components/Popper';
@@ -60,6 +61,9 @@ const MENU_ITEMS = [
 
 function Header({ fullWidth }) {
     const currentUser = false;
+
+    const LoginContext = useContext(ModalContext);
+    const { openModal } = LoginContext;
 
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
@@ -126,10 +130,12 @@ function Header({ fullWidth }) {
                         </>
                     ) : (
                         <>
-                            <Button outline leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                            <Button outline leftIcon={<FontAwesomeIcon icon={faPlus} />} onClick={openModal}>
                                 Upload
                             </Button>
-                            <Button primary>Log in</Button>
+                            <Button primary onClick={openModal}>
+                                Log in
+                            </Button>
                         </>
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
