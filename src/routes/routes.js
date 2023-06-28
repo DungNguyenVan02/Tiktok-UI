@@ -1,7 +1,7 @@
 import config from '~/config';
 
 //Layout
-import { HeaderOnly } from '~/layouts';
+import { HeaderOnly, FullWidthLayout } from '~/layouts';
 
 //Pages
 import Home from '~/pages/Home';
@@ -21,6 +21,7 @@ const publicRoutes = [
     {
         path: config.routes.profile,
         component: Profile,
+        layout: FullWidthLayout,
     },
     {
         path: config.routes.upload,

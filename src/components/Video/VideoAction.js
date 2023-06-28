@@ -22,7 +22,7 @@ function VideoAction({ data }) {
                 <strong>{data?.comments_count}</strong>
             </div>
             <div className={cx('action-group')}>
-                <ShareVideo>
+                <ShareVideo x={-40} y={10}>
                     <button className={cx('wrapper-icon')}>
                         <ShareIcon />
                     </button>

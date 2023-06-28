@@ -90,45 +90,60 @@ function Video({ data, volume, adjustVolume, toggleMuted }) {
     const handlePreview = (attrs) => <VideoPreviewInfo attrs={attrs} data={data} />;
     return (
         <div className={cx('wrapper')}>
-            <Image className={cx('image')} src={data?.user.avatar} alt={data?.user.avatar} />
+            <div>
+                <Link to={`/@${data?.user.nickname}`} state={data?.user}>
+                    <Image className={cx('image')} src={data?.user.avatar} alt={data?.user.avatar} />
+                </Link>
+            </div>
             <div className={cx('content')}>
-                <div className={cx('header')}>
-                    <div>
-                        {/* Using a wrapper <div> tag around the reference element solves this by creating a new parentNode context. */}
+                <Link to={`/@${data?.user.nickname}`} state={data?.user}>
+                    <div className={cx('header')}>
                         <div>
-                            <HeadlessTippy
-                                placement="bottom"
-                                interactive
-                                delay={[800, 0]}
-                                offset={[-40, 40]}
-                                render={handlePreview}
-                            >
-                                <span className={cx('info')}>
-                                    <h3 className={cx('nickname')}>{data?.user.nickname}</h3>
-                                    {data?.user.tick && <FontAwesomeIcon className={cx('tick')} icon={faCheckCircle} />}
-                                    <p className={cx('name')}>{`${data?.user.first_name} ${data?.user.last_name}`}</p>
-                                </span>
-                            </HeadlessTippy>
+                            {/* Using a wrapper <div> tag around the reference element solves this by creating a new parentNode context. */}
+                            <div>
+                                <HeadlessTippy
+                                    placement="bottom"
+                                    interactive
+                                    delay={[800, 0]}
+                                    offset={[-40, 40]}
+                                    render={handlePreview}
+                                >
+                                    <span className={cx('info')}>
+                                        <h3 className={cx('nickname')}>{data?.user.nickname}</h3>
+                                        {data?.user.tick && (
+                                            <FontAwesomeIcon className={cx('tick')} icon={faCheckCircle} />
+                                        )}
+                                        <p
+                                            className={cx('name')}
+                                        >{`${data?.user.first_name} ${data?.user.last_name}`}</p>
+                                    </span>
+                                </HeadlessTippy>
+                            </div>
+                            <span className={cx('tag')}>
+                                <p className={cx('hashtag')}>#Food</p>
+                                <p className={cx('description')}>{data?.description}</p>
+                            </span>
+                            <span className={cx('music')}>
+                                {data?.music && <MusicIcon className={cx('music-icon')} />}
+                                {data?.music}
+                            </span>
                         </div>
-                        <span className={cx('tag')}>
-                            <p className={cx('hashtag')}>#Food</p>
-                            <p className={cx('description')}>{data?.description}</p>
-                        </span>
-                        <span className={cx('music')}>
-                            {data?.music && <MusicIcon className={cx('music-icon')} />}
-                            {data?.music}
-                        </span>
+                        <div>
+                            <Button small outline>
+                                Follow
+                            </Button>
+                        </div>
                     </div>
-                    <div>
-                        <Button small outline>
-                            Follow
-                        </Button>
-                    </div>
-                </div>
+                </Link>
                 <div className={cx('body')}>
                     <div className={cx('video-wrapper')} href="/">
                         <Link to={routes.home}>
                             <video
+                                style={
+                                    data?.meta.video.resolution_x < data?.meta.video.resolution_y
+                                        ? { width: '273px' }
+                                        : { width: '500px' }
+                                }
                                 muted={volume === 0}
                                 className={cx('video')}
                                 ref={videoRef}

@@ -23,6 +23,9 @@
     width: var(--default-layout-width);
     margin: 0 auto;
 }
+.fullWidth {
+    width: 100%;
+}
 
 .logo {
     display: flex;

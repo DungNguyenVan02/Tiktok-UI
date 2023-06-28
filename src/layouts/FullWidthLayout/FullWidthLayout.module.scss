@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    margin-top: var(--default-layout-header-height);
+    display: flex;
+    padding: 24px 14px;
+    width: 100%;
+}
+.content {
+    flex: 1;
+    margin-left: calc(var(--width-sidebar) + 24px);
+}

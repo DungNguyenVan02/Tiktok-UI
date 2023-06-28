@@ -15,9 +15,9 @@ import SuggestedAccounts from '../SuggestedAccounts/SuggestedAccounts';
 
 const cx = classNames.bind(styles);
 
-function Sidebar() {
+function Sidebar({ fullWidth }) {
     return (
-        <aside className={cx('wrapper')}>
+        <aside className={cx('wrapper', { fullWidth })}>
             <Menu>
                 <MenuItem title="For you" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
                 <MenuItem

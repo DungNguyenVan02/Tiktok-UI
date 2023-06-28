@@ -1,0 +1,158 @@
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 624px;
+}
+.profile {
+    display: flex;
+    align-items: center;
+
+    .profile-img {
+        width: 116px;
+        height: 116px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 28px;
+    }
+
+    .profile-nickname {
+        font-size: 3.2rem;
+        font-weight: 700;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+    }
+
+    .profile-tick {
+        margin-left: 8px;
+        font-size: 2rem;
+        color: #20d5ec;
+    }
+
+    .profile-name {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    .profile-follow {
+        padding: 8px 82px;
+        margin-top: 8px;
+    }
+}
+.action {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    svg {
+        margin: 0 8px;
+        cursor: pointer;
+    }
+}
+
+.profile-total {
+    display: flex;
+    margin: 24px 0 6px 0;
+
+    .total-group {
+        margin-right: 20px;
+    }
+
+    .total-num {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-right: 4px;
+    }
+
+    .total-title {
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+}
+
+.bio {
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+.bio-link {
+    display: contents;
+    font-weight: 700;
+}
+
+.tags {
+    --line-hight: 44px;
+
+    display: flex;
+    height: var(--line-hight);
+    margin-bottom: 8px;
+    position: relative;
+    width: 460px;
+
+    .tab-item {
+        font-size: 1.8rem;
+        font-weight: 600;
+        flex: 1 1;
+        text-align: center;
+        line-height: var(--line-hight);
+        cursor: pointer;
+        color: rgba(22, 24, 35, 0.5);
+
+        span {
+            margin-left: 6px;
+        }
+    }
+
+    .tab-item.active {
+        color: var(--text-color);
+    }
+
+    &:hover {
+        .underline {
+            transform: translateX(230px);
+        }
+    }
+}
+
+.underline {
+    transform: translateX(0px);
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    border-radius: 8px;
+    background: rgb(22, 24, 35);
+    left: 0px;
+    bottom: 0px;
+    transition: transform 0.3s ease 0s;
+}
+
+.wrapper-menu {
+    min-width: 180px;
+    z-index: 100;
+    overflow: hidden;
+}
+.menu-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 49px;
+        width: 100%;
+        font-size: 1.6rem;
+        font-weight: 700;
+        border-bottom: 1px solid rgba(22, 24, 35, 0.12);
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(22, 24, 35, 0.03);
+        }
+
+        span {
+            margin-left: 18px;
+        }
+    }
+}

@@ -388,7 +388,7 @@ export const MuteIcon = ({ className, width = '2.4rem', height = '2.4rem' }) => 
     </svg>
 );
 
-export const FlagIcon = ({ className, width = '1.6rem', height = '1.4rem' }) => (
+export const FlagIcon = ({ className, width = '2rem', height = '2rem' }) => (
     <svg
         className={className}
         width={width}
@@ -643,6 +643,60 @@ export const EmailIcon = ({ className, width = '2.6rem', height = '2.6rem' }) =>
             clipRule="evenodd"
             d="M13.6327 14.8957C12.4779 14.8957 11.5417 15.8318 11.5417 16.9866V31.0131C11.5417 32.1679 12.4779 33.104 13.6327 33.104H34.3675C35.5223 33.104 36.4584 32.1679 36.4584 31.0131V16.9866C36.4584 15.8318 35.5223 14.8957 34.3675 14.8957H13.6327ZM33.7214 17.3809L24.0001 24.1142L14.2788 17.3809C13.9321 17.1407 13.4584 17.3889 13.4584 17.8106V19.0944L24.0001 26.396L34.5418 19.0944V17.8106C34.5418 17.3889 34.0681 17.1407 33.7214 17.3809Z"
             fill="white"
+        ></path>
+    </svg>
+);
+
+export const ArrowIcon = ({ className, width = '2.4rem', height = '2.4rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M12.5546 8.35111L13.3171 8.16468V7.37972V3.50006L21.4998 12.0001L13.3171 20.5001V16.3738V15.3664L12.3098 15.3738C8.838 15.3994 5.4275 17.0466 2.49983 19.5882C2.54612 19.2536 2.67769 18.641 2.94391 17.8329C3.3786 16.5132 4.01326 15.1988 4.88691 13.971C6.71045 11.4083 9.24414 9.16046 12.5546 8.35111Z"
+            stroke="currentColor"
+            strokeWidth="2"
+        ></path>
+    </svg>
+);
+
+export const MenuIcon = ({ className, width = '2.4rem', height = '2.4rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M4 24C4 21.7909 5.79086 20 8 20C10.2091 20 12 21.7909 12 24C12 26.2091 10.2091 28 8 28C5.79086 28 4 26.2091 4 24ZM20 24C20 21.7909 21.7909 20 24 20C26.2091 20 28 21.7909 28 24C28 26.2091 26.2091 28 24 28C21.7909 28 20 26.2091 20 24ZM36 24C36 21.7909 37.7909 20 40 20C42.2091 20 44 21.7909 44 24C44 26.2091 42.2091 28 40 28C37.7909 28 36 26.2091 36 24Z"
+        ></path>
+    </svg>
+);
+
+export const BlockIcon = ({ className, width = '2rem', height = '2rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fill="currentColor"
+            fillRule="evenodd"
+            stroke="currentColor"
+            strokeWidth="0.75"
+            d="M4.48 3.994l7.526 7.527A5.333 5.333 0 004.48 3.994zm7.056 8l-7.53-7.53a5.333 5.333 0 007.529 7.529zM3.765 3.75a6 6 0 118.47 8.5 6 6 0 01-8.47-8.5z"
+            clipRule="evenodd"
         ></path>
     </svg>
 );

@@ -58,7 +58,7 @@ const MENU_ITEMS = [
     },
 ];
 
-function Header() {
+function Header({ fullWidth }) {
     const currentUser = false;
 
     const handleMenuChange = (menuItem) => {
@@ -97,7 +97,7 @@ function Header() {
 
     return (
         <header className={cx('wrapper')}>
-            <div className={cx('inner')}>
+            <div className={cx('inner', { fullWidth })}>
                 <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
                 </Link>

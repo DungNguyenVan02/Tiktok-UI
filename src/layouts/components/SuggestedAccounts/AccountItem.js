@@ -45,7 +45,7 @@ function AccountItem({ data }) {
         // Using a wrapper <div> tag around the reference element solves this by creating a new parentNode context.
         <div>
             <HeadlessTippy placement="bottom" interactive delay={[800, 0]} offset={[-20, 0]} render={handlePreview}>
-                <Link to={`/@${data?.nickname}`}>
+                <Link to={`/@${data?.nickname}`} state={data}>
                     <div className={cx('account-item')}>
                         <Image className={cx('avatar')} src={data?.avatar} alt={data?.first_name + data.last_name} />
                         <div className={cx('item-info')}>

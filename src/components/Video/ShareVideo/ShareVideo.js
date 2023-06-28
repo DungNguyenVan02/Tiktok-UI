@@ -68,7 +68,7 @@ const EXPANDED_SHARE_ITEMS = [
     },
 ];
 
-function ShareVideo({ children }) {
+function ShareVideo({ children, x, y }) {
     const [expanded, setExpanded] = useState(false);
     const handleShare = (attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -90,14 +90,20 @@ function ShareVideo({ children }) {
                     <button className={cx('more-btn')} onClick={() => setExpanded(!expanded)}>
                         {expanded ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}
                     </button>
-                    <div className={cx('arrow')} data-popper-arrow="" />
                 </ul>
             </PopperWrapper>
         </div>
     );
     return (
         <div>
-            <HeadlessTippy placement="top" offset={[90, 18]} delay={[50, 500]} interactive render={handleShare}>
+            <HeadlessTippy
+                placement="top-start"
+                offset={[x, y]}
+                delay={[50, 500]}
+                interactive
+                render={handleShare}
+                onHidden={() => setExpanded(false)}
+            >
                 {children}
             </HeadlessTippy>
         </div>
@@ -106,6 +112,8 @@ function ShareVideo({ children }) {
 
 ShareVideo.propTypes = {
     children: PropTypes.node.isRequired,
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
 };
 
 export default ShareVideo;
